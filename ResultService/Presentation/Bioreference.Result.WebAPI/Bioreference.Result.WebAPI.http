@@ -1,6 +1,0 @@
-@Bioreference.Result.WebAPI_HostAddress = http://localhost:5075
-
-GET {{Bioreference.Result.WebAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

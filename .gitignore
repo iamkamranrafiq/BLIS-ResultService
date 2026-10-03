@@ -1,55 +1,136 @@
-﻿# Ignore .NET build outputs
-bin/
-obj/
-publish/
+﻿################################################################################
+# .gitignore for BLIS-ScanningService (.NET 10 / ASP.NET Core)
+################################################################################
 
-# Ignore Visual Studio files
+# -----------------------------------------------------------------------
+# Visual Studio / IDE
+# -----------------------------------------------------------------------
 .vs/
-*.suo
 *.user
+*.suo
 *.userosscache
 *.sln.docstates
-
-# Ignore VS Code files
-.vscode/
-!.vscode/extensions.json
-
-# Ignore JetBrains Rider files
+*.userprefs
 .idea/
-*.sln.iml
+*.DotSettings.user
 
-# Ignore NuGet packages
-packages/
+# -----------------------------------------------------------------------
+# Build output
+# -----------------------------------------------------------------------
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+artifacts/
+publish/
+
+# -----------------------------------------------------------------------
+# NuGet
+# -----------------------------------------------------------------------
 *.nupkg
+*.snupkg
 .nuget/
+packages/
+!**/packages/repositories.config
+project.lock.json
+project.fragment.lock.json
+package-lock.json
 
-# Ignore test results
-TestResults/
-xunit-results/
-
-# Ignore temporary files
-*~
+# -----------------------------------------------------------------------
+# .NET / MSBuild
+# -----------------------------------------------------------------------
+*.exe
+*.dll
+*.pdb
+*.cache
+*.suo
 *.tmp
-*.log
-*.pid
-*.seed
 *.temp
-*.tmp
+project.assets.json
+*.ilk
+*.meta
+*.manifest
+BundleConfig.cs
+Generated_Code/
+_ReSharper*/
+*.resharper
+*.DotSettings
 
-# Ignore macOS metadata
+# -----------------------------------------------------------------------
+# ASP.NET Core / Runtime
+# -----------------------------------------------------------------------
+appsettings.*.json
+!appsettings.json
+!appsettings.Development.json
+!appsettings.Production.json
+!appsettings.QA.json
+
+# -----------------------------------------------------------------------
+# OS files
+# -----------------------------------------------------------------------
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
 
-# Ignore environment variables
+# -----------------------------------------------------------------------
+# Environment / secrets
+# -----------------------------------------------------------------------
 .env
-.env.local
-.env.*.local
+.env.*
+secrets.json
+launchSettings.json
 
-# Ignore user secrets
-Properties/secrets.json
+# -----------------------------------------------------------------------
+# Test results
+# -----------------------------------------------------------------------
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+coverage*/
+[Tt]est[Rr]esult*/
 
-# Ignore .NET CLI tools
-dotnet-*
-!.NET
-/ResultService/.vs/Bioreference.ResultService/v17/.futdcache.v2
-/ResultService/.vs/Bioreference.ResultService/v17/.suo
-/Visual Studio 2022/Visualizers/attribcache140.bin
+# -----------------------------------------------------------------------
+# Generated documentation files (AI-generated guides at solution root)
+# -----------------------------------------------------------------------
+00_START_HERE.md
+ARCHITECTURE.md
+ARCHITECTURE_SUMMARY.md
+ARCHITECTURE_DIAGRAMS.md
+Architecture_Analysis_and_Recommendations.md
+Architecture_Diagrams_and_Flows.md
+BEFORE_AND_AFTER.md
+COMPLETE_GETBATCHLIST_EXAMPLE.md
+COMPLETE_IMPLEMENTATION_GUIDE_INDEX.md
+COMPLETION_REPORT.md
+DELIVERY_COMPLETE_STATUS.md
+DEVELOPMENT_CHECKLIST.md
+DOCUMENTATION_INDEX.md
+FILE_STRUCTURE.md
+FINAL_ARCHITECTURE_REPORT.md
+FINAL_SUMMARY.md
+GETBATCHLIST_IMPLEMENTATION_SUMMARY.md
+GETBATCHLIST_QUICK_GUIDE.md
+GETBATCHLIST_SETUP_GUIDE.md
+Implementation_Roadmap_and_Guidelines.md
+MANIFEST_ALL_DELIVERABLES.md
+PROPER_PROJECT_SEPARATION.md
+QUICK_REFERENCE.md
+QUICK_REFERENCE_GUIDE.md
+QUICK_START.md
+QUICK_START_GETBATCHLIST.md
+SETUP_SUMMARY.md
+SOLUTION_STRUCTURE_VISUAL.md
+
+# Also ignore any README/cleanup notes generated inside project folders
+**/README.md
+**/*_CLEANUP_COMPLETION.md
+**/*_SETUP_GUIDE.md
+/.vscode
+

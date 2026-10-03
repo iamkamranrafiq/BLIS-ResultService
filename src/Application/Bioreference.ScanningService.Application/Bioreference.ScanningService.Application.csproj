@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Bioreference.ScanningService.Application</RootNamespace>
+    <AssemblyName>Bioreference.ScanningService.Application</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BioReference.Logging" Version="10.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.0" />
+    <PackageReference Include="itext" Version="9.7.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="10.0.0" />
+    <PackageReference Include="PDFtoImage" Version="5.2.1" />
+
+    <PackageReference Include="SkiaSharp" Version="4.148.0" />
+	  <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="4.148.0" />
+    <PackageReference Include="ZXing.Net" Version="0.16.11" />
+    <PackageReference Include="ZXing.Net.Bindings.SkiaSharp" Version="0.16.22" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\Bioreference.ScanningService.Domain\Bioreference.ScanningService.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

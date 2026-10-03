@@ -1,0 +1,56 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+	xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+
+	<Package Name="Bioreference Scanning Service"
+		Manufacturer="Bioreference Health"
+		Version="1.0.0.0"
+		UpgradeCode="9c916db9-f854-44a8-9cdd-6182ca1921f1"
+		Scope="perMachine">
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+
+		<MediaTemplate EmbedCab="yes" />
+
+		<StandardDirectory Id="ProgramFiles64Folder">
+			<Directory Id="INSTALLFOLDER" Name="Bioreference Scanning Service" />
+		</StandardDirectory>
+
+		<ComponentGroup Id="ServiceComponents" Directory="INSTALLFOLDER">
+			<Component Id="ServiceExecutable" Guid="*">
+				<File Id="ServiceExe"
+					Source="$(var.PublishDir)Bioreference.ScanningService.WinService.exe"
+					KeyPath="yes" />
+
+				<ServiceInstall Id="ServiceInstaller"
+					Type="ownProcess"
+					Name="BioreferenceScanningService"
+					DisplayName="Bioreference Scanning Service"
+					Description="Bioreference BLIS scanning Windows Service."
+					Start="auto"
+					Account="LocalSystem"
+					ErrorControl="normal" />
+
+				<ServiceControl Id="ServiceControlStartStop"
+					Name="BioreferenceScanningService"
+					Start="install"
+					Stop="both"
+					Remove="uninstall"
+					Wait="yes" />
+			</Component>
+
+			<!-- Auto-harvest every other file from the publish folder (DLLs, runtime, config, etc.) -->
+			<Files Include="$(var.PublishDir)**">
+				<Exclude Files="$(var.PublishDir)Bioreference.ScanningService.WinService.exe" />
+			</Files>
+		</ComponentGroup>
+
+		<Feature Id="Main">
+			<ComponentGroupRef Id="ServiceComponents" />
+		</Feature>
+
+		<!-- Show a standard installer UI that ends with an "installation complete" dialog
+		 (Finish button) so the user gets a clear confirmation that the service installed. -->
+		<ui:WixUI Id="WixUI_Minimal" />
+
+	</Package>
+</Wix>

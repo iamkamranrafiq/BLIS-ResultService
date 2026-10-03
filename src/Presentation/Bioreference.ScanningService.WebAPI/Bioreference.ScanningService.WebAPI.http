@@ -1,0 +1,6 @@
+@Bioreference.ScanningService.WebAPI_HostAddress = http://localhost:5143
+
+GET {{Bioreference.ScanningService.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

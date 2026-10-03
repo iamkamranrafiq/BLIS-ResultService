@@ -1,0 +1,18 @@
+<Project Sdk="WixToolset.Sdk/5.0.2">
+
+	<PropertyGroup>
+		<OutputType>Package</OutputType>
+		<OutputName>Bioreference.ScanningService.Installer</OutputName>
+		<InstallerPlatform>x64</InstallerPlatform>
+		<!-- Path to the published Windows Service output. Override with: dotnet build
+		-p:ServicePublishDir=... -->
+		<ServicePublishDir Condition="'$(ServicePublishDir)' == ''">
+			$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\..\WindowsService\Bioreference.ScanningService.WinService\bin\Release\net10.0-windows\win-x64\publish\'))</ServicePublishDir>
+		<DefineConstants>PublishDir=$(ServicePublishDir)</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="WixToolset.UI.wixext" Version="5.0.2" />
+	</ItemGroup>
+
+</Project>

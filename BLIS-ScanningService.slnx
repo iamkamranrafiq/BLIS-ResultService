@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/src/Domain/">
+    <Project Path="src/Domain/Bioreference.ScanningService.Domain/Bioreference.ScanningService.Domain.csproj" />
+  </Folder>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Application/">
+    <Project Path="src/Application/Bioreference.ScanningService.Application/Bioreference.ScanningService.Application.csproj" />
+  </Folder>
+  <Folder Name="/src/Infrastructure/">
+    <Project Path="src/Infrastructure/Bioreference.ScanningService.Infrastructure/Bioreference.ScanningService.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Presentation/">
+    <Project Path="src/Presentation/Bioreference.ScanningService.Jobs/Bioreference.ScanningService.Jobs.csproj" />
+    <Project Path="src/Presentation/Bioreference.ScanningService.WebAPI/Bioreference.ScanningService.WebAPI.csproj" />
+    <Project Path="src/Presentation/Installer/Bioreference.ScanningService.Installer.wixproj" />
+    <Project Path="src/WindowsService/Bioreference.ScanningService.WinService/Bioreference.ScanningService.WinService.csproj" />
+  </Folder>
+</Solution>
