@@ -1,0 +1,316 @@
+name: Build and Deploy Scanning WinService
+
+on:
+  push:
+    branches:
+      - develop
+      - qa
+      - stage
+      - master
+    paths:
+      - 'src/WindowsService/**'
+      - 'src/Presentation/Installer/**'
+      - 'src/Application/**'
+      - 'src/Infrastructure/**'
+      - 'src/Domain/**'
+      - 'deploy/winservice-installer/**'
+      - '.github/workflows/build-and-deploy-winservice.yaml'
+  workflow_dispatch:
+    inputs:
+      ccr_number:
+        description: 'CCR Number (required for production)'
+        required: false
+        type: string
+      release_version:
+        description: 'Release version (required for production e.g. v1.2.3)'
+        required: false
+        type: string
+
+concurrency:
+  group: winservice-msi-${{ github.ref_name }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  packages: read
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  SERVICE_PROJECT: src/WindowsService/Bioreference.ScanningService.WinService/Bioreference.ScanningService.WinService.csproj
+  INSTALLER_PROJECT: src/Presentation/Installer/Bioreference.ScanningService.Installer.wixproj
+  IMAGE_NAME: blis.scanning-winservice
+  # branch -> host environment (drives --environment arg baked into the service + MSI name)
+  SERVICE_ENVIRONMENT: ${{ github.ref_name == 'master' && 'Production' || github.ref_name == 'stage' && 'Stage' || github.ref_name == 'qa' && 'QA' || 'Development' }}
+
+jobs:
+  build-msi:
+    name: Build MSI (${{ github.ref_name }})
+    runs-on: windows-latest
+    timeout-minutes: 30
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      informational: ${{ steps.version.outputs.informational }}
+      msi_name: ${{ steps.msi.outputs.msi_name }}
+    defaults:
+      run:
+        shell: pwsh
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # tags needed for versioning
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-win-${{ hashFiles('**/*.csproj', '**/*.wixproj') }}
+          restore-keys: nuget-win-
+
+      - name: Add private NuGet feed
+        env:
+          NUGET_USER: ${{ secrets.NUGET_USER }}
+          NUGET_PASSWORD: ${{ secrets.NUGET_PASSWORD }}
+          PACKAGE_REPO: ${{ secrets.PACKAGE_REPO }}
+        run: |
+          dotnet nuget add source $env:PACKAGE_REPO `
+            --name github `
+            --username $env:NUGET_USER `
+            --password $env:NUGET_PASSWORD `
+            --store-password-in-clear-text
+
+      - name: Validate production inputs
+        if: github.ref_name == 'master' && github.event_name == 'workflow_dispatch'
+        env:
+          CCR_NUMBER: ${{ github.event.inputs.ccr_number }}
+          RELEASE_VERSION: ${{ github.event.inputs.release_version }}
+        run: |
+          if (-not $env:CCR_NUMBER) { throw 'ccr_number is required for production' }
+          if ($env:RELEASE_VERSION -notmatch '^v?\d+\.\d+(\.\d+)?$') { throw 'release_version is required for production (e.g. v1.2.3)' }
+
+      - name: Compute version
+        id: version
+        env:
+          RELEASE_VERSION: ${{ github.event.inputs.release_version }}
+        run: |
+          # MSI version = <Major>.<Minor>.<run_number>
+          #   Major.Minor: release_version input (manual run) > latest git tag vX.Y[.Z] > 1.0
+          #   run_number : always increases, so MajorUpgrade replaces the previous install
+          #                (MSI compares only the first 3 fields; Build max 65535).
+          $major = 1; $minor = 0; $source = 'default'
+          $tag = git describe --tags --abbrev=0 --match 'v[0-9]*' 2>$null
+          if ($env:RELEASE_VERSION -match '^v?(\d+)\.(\d+)') { $major = [int]$Matches[1]; $minor = [int]$Matches[2]; $source = "release_version $env:RELEASE_VERSION" }
+          elseif ($tag -match '^v(\d+)\.(\d+)')            { $major = [int]$Matches[1]; $minor = [int]$Matches[2]; $source = "tag $tag" }
+          $build = [int]$env:GITHUB_RUN_NUMBER
+          if ($major -gt 255 -or $minor -gt 255 -or $build -gt 65535) { throw "Version out of MSI range: $major.$minor.$build" }
+
+          $version = "$major.$minor.$build"
+          $sha = "${{ github.sha }}".Substring(0, 7)
+          "version=$version"            >> $env:GITHUB_OUTPUT
+          "informational=$version+$sha" >> $env:GITHUB_OUTPUT
+          Write-Host "Version source: $source -> MSI $version ($env:SERVICE_ENVIRONMENT)"
+          exit 0
+
+      - name: Publish Windows Service (self-contained)
+        run: |
+          $publishDir = Join-Path $env:RUNNER_TEMP 'wixpub\'
+          dotnet publish $env:SERVICE_PROJECT `
+            -c Release `
+            -r win-x64 `
+            --self-contained true `
+            -p:PublishSingleFile=false `
+            -p:Version=${{ steps.version.outputs.version }} `
+            -p:InformationalVersion=${{ steps.version.outputs.informational }} `
+            -o $publishDir
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+          $exe = Join-Path $publishDir 'Bioreference.ScanningService.WinService.exe'
+          if (-not (Test-Path $exe)) { throw "Service exe not found in publish output: $exe" }
+          "PUBLISH_DIR=$publishDir" >> $env:GITHUB_ENV
+
+      - name: Build MSI (WiX)
+        id: msi
+        run: |
+          dotnet build $env:INSTALLER_PROJECT `
+            -c Release `
+            -p:ServicePublishDir=$env:PUBLISH_DIR `
+            -p:ProductVersion=${{ steps.version.outputs.version }} `
+            -p:ServiceEnvironment=$env:SERVICE_ENVIRONMENT
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+          $msi = Get-ChildItem -Path src/Presentation/Installer/bin -Recurse -Filter *.msi |
+                 Where-Object { $_.FullName -match '\\Release\\' } |
+                 Sort-Object LastWriteTime -Descending | Select-Object -First 1
+          if (-not $msi) { throw 'MSI not produced' }
+
+          $outDir = Join-Path $env:RUNNER_TEMP 'msi'
+          New-Item -ItemType Directory -Force -Path $outDir | Out-Null
+          $name = "BLIS-ScanningService-WinService-$env:SERVICE_ENVIRONMENT-${{ steps.version.outputs.version }}.msi"
+          Copy-Item $msi.FullName (Join-Path $outDir $name)
+
+          "MSI_DIR=$outDir"   >> $env:GITHUB_ENV
+          "MSI_NAME=$name"    >> $env:GITHUB_ENV
+          "msi_name=$name"    >> $env:GITHUB_OUTPUT
+
+      - name: Upload MSI artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: winservice-msi
+          path: ${{ env.MSI_DIR }}/*.msi
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Summary
+        env:
+          CCR_NUMBER: ${{ github.event.inputs.ccr_number || '-' }}
+          RELEASE_VERSION: ${{ github.event.inputs.release_version || '-' }}
+        run: |
+          $size = [math]::Round((Get-Item (Join-Path $env:MSI_DIR $env:MSI_NAME)).Length / 1MB, 1)
+          @"
+          ### WinService MSI
+          | | |
+          |---|---|
+          | Branch | ``${{ github.ref_name }}`` |
+          | Environment | ``$env:SERVICE_ENVIRONMENT`` |
+          | Version | ``${{ steps.version.outputs.version }}`` |
+          | File | ``$env:MSI_NAME`` ($size MB) |
+          | Commit | ``${{ github.sha }}`` |
+          | CCR | ``$env:CCR_NUMBER`` |
+          | Release | ``$env:RELEASE_VERSION`` |
+          "@ >> $env:GITHUB_STEP_SUMMARY
+
+  # ── 2. Package MSI into a Linux image (same registry as the API / Jobs images) ──
+  docker:
+    name: Docker image (${{ github.ref_name }})
+    needs: build-msi
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: ${{ github.ref_name == 'master' && 'Production' || github.ref_name == 'stage' && 'Stage' || github.ref_name == 'qa' && 'QA' || 'Development' }}
+    outputs:
+      image: ${{ steps.meta.outputs.image }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: deploy/winservice-installer
+
+      - name: Download MSI
+        uses: actions/download-artifact@v4
+        with:
+          name: winservice-msi
+          path: deploy/winservice-installer/msi
+
+      - name: Prepare build context
+        working-directory: deploy/winservice-installer
+        env:
+          VERSION: ${{ needs.build-msi.outputs.version }}
+          INFORMATIONAL: ${{ needs.build-msi.outputs.informational }}
+          MSI_NAME: ${{ needs.build-msi.outputs.msi_name }}
+          CCR_NUMBER: ${{ github.event.inputs.ccr_number }}
+          RELEASE_VERSION: ${{ github.event.inputs.release_version }}
+        run: |
+          set -euo pipefail
+          test -f "msi/$MSI_NAME"
+          cp "msi/$MSI_NAME" msi/latest.msi
+          jq -n \
+            --arg version "$VERSION" --arg informational "$INFORMATIONAL" \
+            --arg environment "$SERVICE_ENVIRONMENT" --arg file "$MSI_NAME" \
+            --arg commit "$GITHUB_SHA" --arg branch "$GITHUB_REF_NAME" \
+            --arg ccr "$CCR_NUMBER" --arg release "$RELEASE_VERSION" \
+            --arg sha256 "$(sha256sum "msi/$MSI_NAME" | cut -d' ' -f1)" \
+            --arg builtAt "$(date -u +%FT%TZ)" \
+            '$ARGS.named' > version.json
+          cat version.json
+          ls -la msi
+
+      - name: Image metadata
+        id: meta
+        env:
+          REGISTRY: ${{ vars.REGISTRY }}
+          VERSION: ${{ needs.build-msi.outputs.version }}
+        run: |
+          set -euo pipefail
+          [ -n "$REGISTRY" ] || { echo "::error::vars.REGISTRY is not set"; exit 1; }
+          env_lc=$(echo "$SERVICE_ENVIRONMENT" | tr '[:upper:]' '[:lower:]')
+          image="$REGISTRY/$IMAGE_NAME:$env_lc-$VERSION"
+          echo "image=$image"                                   >> "$GITHUB_OUTPUT"
+          echo "latest=$REGISTRY/$IMAGE_NAME:$env_lc-latest"    >> "$GITHUB_OUTPUT"
+          echo "Image: $image"
+
+      - name: Login to registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ vars.REGISTRY }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: deploy/winservice-installer
+          push: true
+          tags: |
+            ${{ steps.meta.outputs.image }}
+            ${{ steps.meta.outputs.latest }}
+          labels: |
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.version=${{ needs.build-msi.outputs.version }}
+
+  # ── 3. Deploy to Kubernetes ──
+  deploy:
+    name: Deploy (${{ github.ref_name }})
+    needs: [build-msi, docker]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: ${{ github.ref_name == 'master' && 'Production' || github.ref_name == 'stage' && 'Stage' || github.ref_name == 'qa' && 'QA' || 'Development' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: deploy/winservice-installer
+
+      - name: Setup kubectl
+        uses: azure/setup-kubectl@v4
+
+      - name: Set kubeconfig
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        run: |
+          set -euo pipefail
+          [ -n "$KUBE_CONFIG" ] || { echo "::error::secrets.KUBE_CONFIG is not set"; exit 1; }
+          mkdir -p ~/.kube
+          echo "$KUBE_CONFIG" | base64 -d > ~/.kube/config
+          chmod 600 ~/.kube/config
+
+      - name: Apply manifests
+        env:
+          NAMESPACE: ${{ vars.K8S_NAMESPACE }}
+          IMAGE: ${{ needs.docker.outputs.image }}
+          ENVIRONMENT: ${{ env.SERVICE_ENVIRONMENT }}
+          VERSION: ${{ needs.build-msi.outputs.version }}
+        run: |
+          set -euo pipefail
+          [ -n "$NAMESPACE" ] || { echo "::error::vars.K8S_NAMESPACE is not set"; exit 1; }
+          envsubst '${NAMESPACE} ${IMAGE} ${ENVIRONMENT} ${VERSION}' < deploy/winservice-installer/k8s.yaml > rendered.yaml
+          kubectl apply -f rendered.yaml
+          kubectl -n "$NAMESPACE" rollout status deployment/blis-scanning-winservice-installer --timeout=180s
+
+      - name: Summary
+        env:
+          NAMESPACE: ${{ vars.K8S_NAMESPACE }}
+          IMAGE: ${{ needs.docker.outputs.image }}
+        run: |
+          {
+            echo "### Deployed"
+            echo "- Image: \`$IMAGE\`"
+            echo "- In-cluster URL: \`http://blis-scanning-winservice-installer.$NAMESPACE.svc/winservice/latest.msi\`"
+          } >> "$GITHUB_STEP_SUMMARY"

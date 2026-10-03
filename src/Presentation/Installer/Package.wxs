@@ -3,7 +3,7 @@
 
 	<Package Name="Bioreference Scanning Service"
 		Manufacturer="Bioreference Health"
-		Version="1.0.0.0"
+		Version="$(var.ProductVersion)"
 		UpgradeCode="9c916db9-f854-44a8-9cdd-6182ca1921f1"
 		Scope="perMachine">
 
@@ -28,7 +28,8 @@
 					Description="Bioreference BLIS scanning Windows Service."
 					Start="auto"
 					Account="LocalSystem"
-					ErrorControl="normal" />
+					ErrorControl="normal"
+					Arguments="--environment $(var.ServiceEnvironment)" />
 
 				<ServiceControl Id="ServiceControlStartStop"
 					Name="BioreferenceScanningService"

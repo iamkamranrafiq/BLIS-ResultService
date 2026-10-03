@@ -8,7 +8,11 @@
 		-p:ServicePublishDir=... -->
 		<ServicePublishDir Condition="'$(ServicePublishDir)' == ''">
 			$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\..\WindowsService\Bioreference.ScanningService.WinService\bin\Release\net10.0-windows\win-x64\publish\'))</ServicePublishDir>
-		<DefineConstants>PublishDir=$(ServicePublishDir)</DefineConstants>
+		<!-- MSI ProductVersion (Major.Minor.Build). CI passes -p:ProductVersion=x.y.z; must increase for MajorUpgrade. -->
+		<ProductVersion Condition="'$(ProductVersion)' == ''">1.0.0</ProductVersion>
+		<!-- Host environment the service runs under (Development | QA | Stage | Production). -->
+		<ServiceEnvironment Condition="'$(ServiceEnvironment)' == ''">Production</ServiceEnvironment>
+		<DefineConstants>PublishDir=$(ServicePublishDir);ProductVersion=$(ProductVersion);ServiceEnvironment=$(ServiceEnvironment)</DefineConstants>
 	</PropertyGroup>
 
 	<ItemGroup>

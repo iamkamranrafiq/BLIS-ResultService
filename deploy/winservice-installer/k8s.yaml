@@ -1,0 +1,60 @@
+# Rendered by the deploy job with envsubst: ${NAMESPACE} ${IMAGE} ${ENVIRONMENT} ${VERSION}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blis-scanning-winservice-installer
+  namespace: ${NAMESPACE}
+  labels:
+    app: blis-scanning-winservice-installer
+    environment: ${ENVIRONMENT}
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: blis-scanning-winservice-installer
+  template:
+    metadata:
+      labels:
+        app: blis-scanning-winservice-installer
+        environment: ${ENVIRONMENT}
+        version: "${VERSION}"
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile: { type: RuntimeDefault }
+      containers:
+        - name: installer
+          image: ${IMAGE}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+          readinessProbe:
+            httpGet: { path: /healthz, port: http }
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /healthz, port: http }
+            periodSeconds: 30
+          resources:
+            requests: { cpu: 10m, memory: 32Mi }
+            limits:   { cpu: 100m, memory: 64Mi }
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities: { drop: ["ALL"] }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blis-scanning-winservice-installer
+  namespace: ${NAMESPACE}
+  labels:
+    app: blis-scanning-winservice-installer
+spec:
+  type: ClusterIP
+  selector:
+    app: blis-scanning-winservice-installer
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
