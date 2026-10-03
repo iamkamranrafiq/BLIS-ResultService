@@ -1,0 +1,798 @@
+{
+  "Tables": [
+    {
+      "TableName": "MSH",
+      "Type": "table",
+      "Repeats": false,
+      "ParentSegment": null,
+      "NonRepeatingGroup": false,
+      "MergeSegment": false,
+      "RootSegment": "MSH",
+      "FieldSegment": null,
+      "FieldSegmentRepeatsAddAll": false,
+      "Columns": [
+        {
+          "ColumnName": "MessageType",
+          "Mapping": "MSH.9.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "MessageEvent",
+          "Mapping": "MSH.9.2",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "SendingApplication",
+          "Mapping": "MSH.3.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "SendingFacilityCode",
+          "Mapping": "MSH.4.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "SendingFacility",
+          "Mapping": "MSH.4.2",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ReceivngApplication",
+          "Mapping": "MSH.5.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ReceivingFacility",
+          "Mapping": "MSH.6.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "MessageTime",
+          "Mapping": "MSH.7",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "MessageID",
+          "Mapping": "MSH.10",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "VersionId",
+          "Mapping": "MSH",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "AcceptAckType",
+          "Mapping": "MSH",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ProcessingId",
+          "Mapping": "MSH",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        }
+      ],
+      "GroupTables": null,
+      "GroupSubTables": null
+    },
+    {
+      "TableName": "PatientInfo",
+      "Type": "table",
+      "Repeats": false,
+      "ParentSegment": null,
+      "NonRepeatingGroup": false,
+      "MergeSegment": false,
+      "RootSegment": "PID",
+      "FieldSegment": null,
+      "FieldSegmentRepeatsAddAll": false,
+      "Columns": [
+        {
+          "ColumnName": "ClientMRN",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "LastName",
+          "Mapping": "PID.5.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "FirstName",
+          "Mapping": "PID.5.2",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "DOB",
+          "Mapping": "PID.7",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Age",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Sex",
+          "Mapping": "PID.8",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Address1",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Address2",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "City",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "State",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Zip",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "HomePhone",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "WorkPhone",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "SSN",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "AltField1",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "AltField2",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "AltField3",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Set_ID",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "PatientIdentifierList",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "DoctorReference",
+          "Mapping": "PID",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        }
+      ],
+      "GroupTables": null,
+      "GroupSubTables": null
+    },
+    {
+      "TableName": "PatientInfoComments",
+      "Type": "table",
+      "Repeats": true,
+      "ParentSegment": null,
+      "NonRepeatingGroup": false,
+      "MergeSegment": false,
+      "RootSegment": "NTE",
+      "FieldSegment": null,
+      "FieldSegmentRepeatsAddAll": false,
+      "Columns": [
+        {
+          "ColumnName": "NoteText",
+          "Mapping": "NTE",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "NoteId",
+          "Mapping": "NTE.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        }
+      ],
+      "GroupTables": null,
+      "GroupSubTables": null
+    },
+    {
+      "TableName": "PatientVisit",
+      "Type": "table",
+      "Repeats": false,
+      "ParentSegment": null,
+      "NonRepeatingGroup": false,
+      "MergeSegment": false,
+      "RootSegment": "PV1",
+      "FieldSegment": null,
+      "FieldSegmentRepeatsAddAll": false,
+      "Columns": [
+        {
+          "ColumnName": "Set_ID",
+          "Mapping": "PV1.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "PatientClass",
+          "Mapping": "PV1.2",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "PatLocation",
+          "Mapping": "PV1.3.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        }
+      ],
+      "GroupTables": null,
+      "GroupSubTables": null
+    },
+    {
+      "TableName": "LabAccession",
+      "Type": "table",
+      "Repeats": true,
+      "ParentSegment": null,
+      "NonRepeatingGroup": false,
+      "MergeSegment": false,
+      "RootSegment": "OBR",
+      "FieldSegment": null,
+      "FieldSegmentRepeatsAddAll": false,
+      "Columns": [
+        {
+          "ColumnName": "ClientOrderNumber",
+          "Mapping": "OBR",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "AccessionNumber",
+          "Mapping": "OBR.3.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ReferenceLabNumber",
+          "Mapping": "OBR",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ClientAccountNumber",
+          "Mapping": "OBR.16.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "OrderingDoctorLast",
+          "Mapping": "OBR.16.2",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "OrderingDoctorFirst",
+          "Mapping": "OBR",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "OrderingDoctorMiddle",
+          "Mapping": "OBR",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "OrderingDoctorName",
+          "Mapping": "OBR",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Priority",
+          "Mapping": "OBR",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "OrderDate",
+          "Mapping": "OBR.6.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "CollectDate",
+          "Mapping": "OBR.1.14",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ReceivedDate",
+          "Mapping": "OBR",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "AltField1",
+          "Mapping": "OBR.2.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "AltField2",
+          "Mapping": "OBR",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "AltField3",
+          "Mapping": "OBR",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Set_ID",
+          "Mapping": "OBR",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        }
+      ],
+      "GroupTables": null,
+      "GroupSubTables": null
+    },
+    {
+      "TableName": "LabAccessionComment",
+      "Type": "table",
+      "Repeats": true,
+      "ParentSegment": null,
+      "NonRepeatingGroup": false,
+      "MergeSegment": false,
+      "RootSegment": "NTE",
+      "FieldSegment": null,
+      "FieldSegmentRepeatsAddAll": false,
+      "Columns": [
+        {
+          "ColumnName": "NoteText",
+          "Mapping": "NTE.3",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "NoteId",
+          "Mapping": "NTE.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        }
+      ],
+      "GroupTables": null,
+      "GroupSubTables": null
+    },
+    {
+      "TableName": "LabReports",
+      "Type": "group",
+      "Repeats": false,
+      "ParentSegment": null,
+      "NonRepeatingGroup": false,
+      "MergeSegment": false,
+      "RootSegment": null,
+      "FieldSegment": null,
+      "FieldSegmentRepeatsAddAll": false,
+      "Columns": null,
+      "GroupTables": [
+        {
+          "TableName": "LabReport",
+          "Type": "table",
+          "Repeats": false,
+          "ParentSegment": null,
+          "NonRepeatingGroup": false,
+          "MergeSegment": false,
+          "RootSegment": "OBR",
+          "FieldSegment": null,
+          "FieldSegmentRepeatsAddAll": false,
+          "Columns": [
+            {
+              "ColumnName": "TestCode",
+              "Mapping": "OBR.4.1",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "TestDescription",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "Set_ID",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "AccessionNum",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "Priority",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "RequestDate",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "CollectDate",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "CollectedBy",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "ReceivedDate",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "ProviderLastName",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "ProviderCode",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "ProviderFirstName",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "ProviderMiddleName",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "ResultDate",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "CallBackPhone",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "DiagID",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "LabReportStatus",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "IsPanel",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "PreliminaryRelease",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "AccessionLocation",
+              "Mapping": "OBR",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            }
+          ],
+          "GroupTables": null,
+          "GroupSubTables": null
+        },
+        {
+          "TableName": "LabReportComment",
+          "Type": "table",
+          "Repeats": true,
+          "ParentSegment": null,
+          "NonRepeatingGroup": false,
+          "MergeSegment": false,
+          "RootSegment": "NTE",
+          "FieldSegment": null,
+          "FieldSegmentRepeatsAddAll": false,
+          "Columns": [
+            {
+              "ColumnName": "NoteText",
+              "Mapping": "NTE.3",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "NoteId",
+              "Mapping": "NTE.1",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            }
+          ],
+          "GroupTables": null,
+          "GroupSubTables": null
+        },
+        {
+          "TableName": "Results",
+          "Type": "group",
+          "Repeats": false,
+          "ParentSegment": null,
+          "NonRepeatingGroup": false,
+          "MergeSegment": false,
+          "RootSegment": null,
+          "FieldSegment": null,
+          "FieldSegmentRepeatsAddAll": false,
+          "Columns": null,
+          "GroupTables": null,
+          "GroupSubTables": [
+            {
+              "TableName": "Result",
+              "Type": "table",
+              "Repeats": false,
+              "ParentSegment": null,
+              "NonRepeatingGroup": false,
+              "MergeSegment": false,
+              "RootSegment": "OBX",
+              "FieldSegment": null,
+              "FieldSegmentRepeatsAddAll": false,
+              "Columns": [
+                {
+                  "ColumnName": "ValueType",
+                  "Mapping": "OBX",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "Code",
+                  "Mapping": "OBX.3.1",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "Description",
+                  "Mapping": "OBX",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "Value",
+                  "Mapping": "OBX.5",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "Units",
+                  "Mapping": "OBX",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "ReferenceRange",
+                  "Mapping": "OBX",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "Flag",
+                  "Mapping": "OBX",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "Status",
+                  "Mapping": "OBX.11",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "ReportDate",
+                  "Mapping": "OBX.14",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "ReferenceLabId",
+                  "Mapping": "OBX",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "Set_ID",
+                  "Mapping": "OBX",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "MachineSequence",
+                  "Mapping": "OBX.4",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "Rack",
+                  "Mapping": "OBX.12",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "RackPosition",
+                  "Mapping": "OBX.13",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "InstrumentId",
+                  "Mapping": "OBX.15.1",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "Comments_Reference",
+                  "Mapping": "OBX",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "ReportingType",
+                  "Mapping": "OBX",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "TechUser",
+                  "Mapping": "OBX.16.2",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "ReleaseUser",
+                  "Mapping": "OBX.16.1",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "PerformLocation",
+                  "Mapping": "OBX.15.2",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "PresumptiveHold",
+                  "Mapping": "OBX.17.1",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                }
+              ],
+              "GroupTables": null,
+              "GroupSubTables": null
+            },
+            {
+              "TableName": "FlagGroup",
+              "Type": "group",
+              "Repeats": false,
+              "ParentSegment": null,
+              "NonRepeatingGroup": false,
+              "MergeSegment": false,
+              "RootSegment": null,
+              "FieldSegment": null,
+              "FieldSegmentRepeatsAddAll": false,
+              "Columns": null,
+              "GroupTables": null,
+              "GroupSubTables": null
+            },
+            {
+              "TableName": "ResultComment",
+              "Type": "table",
+              "Repeats": true,
+              "ParentSegment": null,
+              "NonRepeatingGroup": false,
+              "MergeSegment": false,
+              "RootSegment": "NTE",
+              "FieldSegment": null,
+              "FieldSegmentRepeatsAddAll": false,
+              "Columns": [
+                {
+                  "ColumnName": "NoteText",
+                  "Mapping": "NTE.3",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                },
+                {
+                  "ColumnName": "NoteId",
+                  "Mapping": "NTE.1",
+                  "RepeatUseLast": false,
+                  "RepetitionNumber": 0
+                }
+              ],
+              "GroupTables": null,
+              "GroupSubTables": null
+            }
+          ]
+        }
+      ],
+      "GroupSubTables": null
+    }
+  ]
+}

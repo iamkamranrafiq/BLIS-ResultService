@@ -1,0 +1,318 @@
+{
+  "Tables": [
+    {
+      "TableName": "MSH",
+      "Type": "table",
+      "Repeats": true,
+      "ParentSegment": null,
+      "NonRepeatingGroup": false,
+      "MergeSegment": false,
+      "RootSegment": "MSH",
+      "FieldSegment": null,
+      "FieldSegmentRepeatsAddAll": false,
+      "Columns": [
+        {
+          "ColumnName": "MessageType",
+          "Mapping": "MSH.9.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "MessageEvent",
+          "Mapping": "MSH.9.2",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "SendingApplication",
+          "Mapping": "MSH.3.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "SendingFacilityCode",
+          "Mapping": "MSH.4.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "SendingFacility",
+          "Mapping": "MSH.4.2",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ReceivngApplication",
+          "Mapping": "MSH.5.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ReceivingFacility",
+          "Mapping": "MSH.6.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "MessageTime",
+          "Mapping": "MSH.7",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "MessageID",
+          "Mapping": "MSH.10",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "VersionId",
+          "Mapping": "MSH.12",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "AcceptAckType",
+          "Mapping": "MSH",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ProcessingId",
+          "Mapping": "MSH.11",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "SequenceNumber",
+          "Mapping": "MSH.13",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        }
+
+
+      ],
+      "GroupTables": null,
+      "GroupSubTables": null
+    },
+    {
+      "TableName": "EquipmentDetail",
+      "Type": "table",
+      "Repeats": false,
+      "ParentSegment": null,
+      "NonRepeatingGroup": false,
+      "MergeSegment": false,
+      "RootSegment": "EQU",
+      "FieldSegment": null,
+      "FieldSegmentRepeatsAddAll": false,
+      "Columns": [
+        {
+          "ColumnName": "EquipmentInstanceIdentifier",
+          "Mapping": "EQU.1.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "EventDateTime",
+          "Mapping": "EQU.2",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        }
+      ],
+      "GroupTables": null,
+      "GroupSubTables": null
+    },
+    {
+      "TableName": "SpecimenContainerDetail",
+      "Type": "table",
+      "Repeats": false,
+      "ParentSegment": null,
+      "NonRepeatingGroup": false,
+      "MergeSegment": false,
+      "RootSegment": "SAC",
+      "FieldSegment": null,
+      "FieldSegmentRepeatsAddAll": false,
+      "Columns": [
+        {
+          "ColumnName": "ExternalAccessionIdentifier",
+          "Mapping": "SAC.1.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "AccessionIdentifier",
+          "Mapping": "SAC.2.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ContainerIdentifier",
+          "Mapping": "SAC.3.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "PrimaryContainerIdentifier",
+          "Mapping": "SAC.4.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "EquipmentContainerIdentifier",
+          "Mapping": "SAC.5.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "SpecimenSource",
+          "Mapping": "SAC.6",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "RegistrationDateTime",
+          "Mapping": "SAC.7",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        }
+      ],
+      "GroupTables": null,
+      "GroupSubTables": null
+    },
+    {
+      "TableName": "Result",
+      "Type": "table",
+      "Repeats": true,
+      "ParentSegment": null,
+      "NonRepeatingGroup": false,
+      "MergeSegment": false,
+      "RootSegment": "OBX",
+      "FieldSegment": null,
+      "FieldSegmentRepeatsAddAll": false,
+      "Columns": [
+        {
+          "ColumnName": "Set_ID",
+          "Mapping": "OBX.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ValueType",
+          "Mapping": "OBX.2",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Code",
+          "Mapping": "OBX.3.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Description",
+          "Mapping": "OBX",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Value",
+          "Mapping": "OBX.5",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Units",
+          "Mapping": "OBX",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ReferenceRange",
+          "Mapping": "OBX",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Flag",
+          "Mapping": "OBX",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Status",
+          "Mapping": "OBX.11",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ReportDate",
+          "Mapping": "OBX.14",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ReferenceLabId",
+          "Mapping": "OBX",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "MachineSequence",
+          "Mapping": "OBX.4",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Rack",
+          "Mapping": "OBX.12",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "RackPosition",
+          "Mapping": "OBX.13",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "InstrumentId",
+          "Mapping": "OBX.15.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "Comments_Reference",
+          "Mapping": "OBX",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ReportingType",
+          "Mapping": "OBX",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "TechUser",
+          "Mapping": "OBX.16.2",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ReleaseUser",
+          "Mapping": "OBX.16.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "PerformLocation",
+          "Mapping": "OBX.15.2",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        }
+      ],
+      "GroupTables": null,
+      "GroupSubTables": null
+    }
+  ]
+}

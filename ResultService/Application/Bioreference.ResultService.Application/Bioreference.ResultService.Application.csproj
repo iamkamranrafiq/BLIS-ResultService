@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DTOs\**" />
+    <Compile Remove="Mappers\**" />
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="DTOs\**" />
+    <EmbeddedResource Remove="Mappers\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="DTOs\**" />
+    <None Remove="Mappers\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="16.1.1" />
+    <PackageReference Include="Bioreference.Contracts.Order" Version="10.0.8" />
+    <PackageReference Include="Bioreference.HL7Parser" Version="1.0.15" />
+    <PackageReference Include="Bioreference.Messaging.Abstractions" Version="1.5.1" />
+    <PackageReference Include="Bioreference.Messaging.Kafka" Version="1.4.2" />
+    <PackageReference Include="ClosedXML" Version="0.105.0" />
+    <PackageReference Include="Flurl.Http" Version="4.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.5" />
+    <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="StackExchange.Redis" Version="2.12.14" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Bioreference.ResultService.Common\Bioreference.ResultService.Common.csproj" />
+    <ProjectReference Include="..\..\Domain\Bioreference.LIS\Bioreference.LIS.csproj" />
+    <ProjectReference Include="..\..\Common\Bioreference.Contracts.Result\Bioreference.Contracts.Result.csproj" />
+    <ProjectReference Include="..\Bioreference.ResultService.Abstractions\Bioreference.ResultService.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="HL7Configuration\ORU_Mapping_Outbound.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="HL7Configuration\ORU_Mapping.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="HL7Configuration\ResultReportingORU_Mapping.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="HL7Configuration\SSU_Mapping.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="HL7Configuration\STS_Mapping.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SuppressNte\SuppressNtes.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

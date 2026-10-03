@@ -1,0 +1,139 @@
+{
+  "Tables": [
+    {
+      "TableName": "MSH",
+      "Type": "table",
+      "Repeats": false,
+      "ParentSegment": null,
+      "NonRepeatingGroup": false,
+      "MergeSegment": false,
+      "RootSegment": "MSH",
+      "FieldSegment": null,
+      "FieldSegmentRepeatsAddAll": false,
+      "Columns": [
+        {
+          "ColumnName": "MessageType",
+          "Mapping": "MSH.9.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "MessageEvent",
+          "Mapping": "MSH.9.2",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "SendingApplication",
+          "Mapping": "MSH.3.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "SendingFacilityCode",
+          "Mapping": "MSH.4.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "SendingFacility",
+          "Mapping": "MSH.4.2",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ReceivngApplication",
+          "Mapping": "MSH.5.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ReceivingFacility",
+          "Mapping": "MSH.6.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "MessageTime",
+          "Mapping": "MSH.7.1",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "MessageID",
+          "Mapping": "MSH.10",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "VersionId",
+          "Mapping": "MSH",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "AcceptAckType",
+          "Mapping": "MSH",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        },
+        {
+          "ColumnName": "ProcessingId",
+          "Mapping": "MSH",
+          "RepeatUseLast": false,
+          "RepetitionNumber": 0
+        }
+      ],
+      "GroupTables": null,
+      "GroupSubTables": null
+    },
+    {
+      "TableName": "MSAGroup",
+      "Type": "group",
+      "Repeats": false,
+      "ParentSegment": null,
+      "NonRepeatingGroup": false,
+      "MergeSegment": false,
+      "RootSegment": null,
+      "FieldSegment": null,
+      "FieldSegmentRepeatsAddAll": false,
+      "Columns": null,
+      "GroupTables": [
+        {
+          "TableName": "MSA",
+          "Type": "table",
+          "Repeats": true,
+          "ParentSegment": null,
+          "NonRepeatingGroup": false,
+          "MergeSegment": false,
+          "RootSegment": "MSA",
+          "FieldSegment": null,
+          "FieldSegmentRepeatsAddAll": false,
+          "Columns": [
+            {
+              "ColumnName": "AckCode",
+              "Mapping": "MSA.1",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "ControlID",
+              "Mapping": "MSA.2",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            },
+            {
+              "ColumnName": "StatusMsg",
+              "Mapping": "MSA.3",
+              "RepeatUseLast": false,
+              "RepetitionNumber": 0
+            }
+          ],
+          "GroupTables": null,
+          "GroupSubTables": null
+        }
+      ],
+      "GroupSubTables": null
+    }
+  ]
+}

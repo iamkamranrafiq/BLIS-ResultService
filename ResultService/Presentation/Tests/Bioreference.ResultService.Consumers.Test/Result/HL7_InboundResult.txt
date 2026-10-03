@@ -1,0 +1,27 @@
+﻿MSH|^~\&|dp|SLI SM,CA|rubicon|50407|20210330131632||ORU^R01|629213826|P|2.1|
+PID|1|8034235|123413297||ROCHFORD^RICHARD^^^^^^||19730511000000|O|||^^^^^||||||||NOT GIVEN||||||
+OBR|1|8034235|021-408103|Z870^TBG (THYROXINE BINDING GLOBULIN)^L|S|202103271109|202103250001||||S|||202103271109||1598889248^SHARAHY^TATIANA||||021-408103-LQS-0^ULTRA||202103271109|||I|||||||||||||||||||||||||
+OBR|2|8034235|021-408103|Z36585^VITAMIN K^L|S|202103271109|202103250001||||S|||202103271109||1598889248^SHARAHY^TATIANA||||021-408103-LQI-0^ULTRA||202103271109|||I|||||||||||||||||||||||||
+OBR|3|8034235|021-408103|Z636^MERCURY, BLOOD^L||202103271109|202103250001|||^^^^^^^L|S|||202103271109||1598889248^SHARAHY^TATIANA||||021-408103-JCT-0^ULTRA|MERCURY, BLOOD`--------------|202103301316|||F|||||||||||||||||||||||||
+OBX|1|ST|80008200^Mercury, Blood^L||3|mcg/L|< 11||||F|||202103301313|SLI^^L|planex1|
+NTE|1|L| This test was developed and its analytical performance characteristics have
+NTE|2|L|been determined by Quest Diagnostics Nichols Institute, Valencia. It has not
+NTE|3|L|been cleared or approved by the US Food and Drug Administration. This assay
+NTE|4|L|has been validated pursuant to the CLIA regulations and is used for clinical
+NTE|5|L|purposes.
+OBR|4|8034235|021-408103|F2G^COW'S MILK (F2) IGG^L||202103271109|202103250001|||^^^^^^^L|S|||202103271109||1598889248^SHARAHY^TATIANA||||021-408103-AHX-0^ULTRA|IgG ALLERGEN TESTING - FOOD`---------------------------|202103291648|||F|||||||||||||||||||||||||
+OBX|1|ST|71014^Cow's Milk (f2) IgG^L||64.4|mcg/mL|< 2.0|H|||F|||202103291627|SLI^^L|auto5h|
+NTE|1|L|
+NTE|2|L|  The occurrence of IgG antibodies to cow's milk is a physiologic phenomenon
+NTE|3|L|without diagnostic significance. We recommend testing IgE Casein (#F78) if
+NTE|4|L|cow's milk allergy is suspected as casein is the major allergenic and
+NTE|5|L|antigenic protein in cow's milk. (Keller KM, et al., Klin Paediatr 1999;
+NTE|6|L|211:384-8.)
+NTE|7|L| This test(s) was performed using a kit that has not been cleared or
+NTE|8|L|approved by the FDA. The analytical performance characteristics of this test
+NTE|9|L|have been determined by Quest Diagnostics Nichols Institute, Valencia, CA.
+NTE|10|L|This test, and any food specific allergen IgG result, should not be used for
+NTE|11|L|the diagnosis of allergic or atopic disease states (except for sensitivity
+NTE|12|L|to milk in neonates and gluten sensitivity). The use of food specific
+NTE|13|L|allergen IgG results should be restricted to the assessment of response to
+NTE|14|L|therapeutic interventions.

@@ -1,0 +1,55 @@
+﻿# Ignore .NET build outputs
+bin/
+obj/
+publish/
+
+# Ignore Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore VS Code files
+.vscode/
+!.vscode/extensions.json
+
+# Ignore JetBrains Rider files
+.idea/
+*.sln.iml
+
+# Ignore NuGet packages
+packages/
+*.nupkg
+.nuget/
+
+# Ignore test results
+TestResults/
+xunit-results/
+
+# Ignore temporary files
+*~
+*.tmp
+*.log
+*.pid
+*.seed
+*.temp
+*.tmp
+
+# Ignore macOS metadata
+.DS_Store
+
+# Ignore environment variables
+.env
+.env.local
+.env.*.local
+
+# Ignore user secrets
+Properties/secrets.json
+
+# Ignore .NET CLI tools
+dotnet-*
+!.NET
+/ResultService/.vs/Bioreference.ResultService/v17/.futdcache.v2
+/ResultService/.vs/Bioreference.ResultService/v17/.suo
+/Visual Studio 2022/Visualizers/attribcache140.bin

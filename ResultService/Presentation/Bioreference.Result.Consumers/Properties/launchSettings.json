@@ -1,0 +1,258 @@
+{
+  "profiles": {
+    "Reflex (Development)": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/Reflex"
+      },
+      "dotnetRunMessages": true
+    },
+    "CreateManifest (Development)": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/CreateManifest"
+      },
+      "dotnetRunMessages": true
+    },
+    "GenecysOrder (Development)": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/GenecysOrder"
+      },
+      "dotnetRunMessages": true
+    },
+    "GenecysOrder (QA)": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "QA",
+        "CONFIG_DIR": "Consumers/GenecysOrder",
+        "OTEL_EXPORTER_OTLP_METRICS_ENDPOINT": "http://localhost:55691/v1/metrics",
+        "OTEL_EXPORTER_OTLP_TRACES_ENDPOINT": "http://localhost:4318/v1/traces",
+        "OTEL_EXPORTER_OTLP_LOGS_ENDPOINT": "http://localhost:4318/v1/logs",
+        "OTEL_EXPORTER_OTLP_PROTOCOL": "http/protobuf",
+        "OTEL_EXPORTER_PROCESSOR_TYPE": "Batch",
+        "OTEL_METRIC_EXPORT_INTERVAL": "30000",
+        "Logggin__LogLevel__System.Net.Http.HttpClient.OtlpMetricExporter.LogicalHandler": "None",
+        "Logggin__LogLevel__System.Net.Http.HttpClient.OtlpMetricExporter.ClientHandler": "None"
+      },
+      "dotnetRunMessages": true
+    },
+    "ReportOut (Development)": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/ReportOut"
+      },
+      "dotnetRunMessages": true
+    },
+    "ReportOutNonCum (Development)": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/ReportOutNonCum"
+      },
+      "dotnetRunMessages": true
+    },
+    "ReportOutNonCum (QA)": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "QA",
+        "CONFIG_DIR": "Consumers/ReportOutNonCum"
+      },
+      "dotnetRunMessages": true
+    },
+    "ReportOut (QA)": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "QA",
+        "CONFIG_DIR": "Consumers/ReportOut"
+      },
+      "dotnetRunMessages": true
+    },
+    "Result-ARUP": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/Result/ARUP"
+      },
+      "dotnetRunMessages": true
+    },
+    "Result-Drugscan": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/Result/Drugscan"
+      },
+      "dotnetRunMessages": true
+    },
+    "Result-FCS": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/Result/FCS"
+      },
+      "dotnetRunMessages": true
+    },
+    "Result-Instrument": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/Result/Instrument"
+      },
+      "dotnetRunMessages": true
+    },
+    "Result-Labcorp1": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/Result/Labcorp1"
+      },
+      "dotnetRunMessages": true
+    },
+    "Result-Labcorp2": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/Result/Labcorp2"
+      },
+      "dotnetRunMessages": true
+    },
+    "Result-MAYO": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/Result/MAYO"
+      },
+      "dotnetRunMessages": true
+    },
+    "Result-MDTX": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/Result/MDTX"
+      },
+      "dotnetRunMessages": true
+    },
+    "Result-NMS": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/Result/NMS"
+      },
+      "dotnetRunMessages": true
+    },
+    "Result-QST": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/Result/QST"
+      },
+      "dotnetRunMessages": true
+    },
+    "Result-SPEC": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/Result/SPEC"
+      },
+      "dotnetRunMessages": true
+    },
+    "Result-VAL": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/Result/VAL"
+      },
+      "dotnetRunMessages": true
+    },
+    "Result-VCOR": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/Result/VCOR"
+      },
+      "dotnetRunMessages": true
+    },
+    "Audit": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/Audit",
+        "OTEL_EXPORTER_OTLP_METRICS_ENDPOINT": "http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318/v1/metrics",
+        "OTEL_EXPORTER_OTLP_TRACES_ENDPOINT": "http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318/v1/traces",
+        "OTEL_EXPORTER_OTLP_LOGS_ENDPOINT": "http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318/v1/logs",
+        "OTEL_EXPORTER_OTLP_PROTOCOL": "http/protobuf",
+        "OTEL_EXPORTER_PROCESSOR_TYPE": "Batch",
+        "OTEL_METRIC_EXPORT_INTERVAL": "30000"
+      },
+      "dotnetRunMessages": true
+    },
+    "ProcessOrder": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Load",
+        "CONFIG_DIR": "Consumers/ProcessOrder",
+        "OTEL_EXPORTER_OTLP_METRICS_ENDPOINT": "http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318/v1/metrics",
+        "OTEL_EXPORTER_OTLP_TRACES_ENDPOINT": "http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318/v1/traces",
+        "OTEL_EXPORTER_OTLP_LOGS_ENDPOINT": "http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318/v1/logs",
+        "OTEL_EXPORTER_OTLP_PROTOCOL": "http/protobuf",
+        "OTEL_EXPORTER_PROCESSOR_TYPE": "Batch",
+        "OTEL_METRIC_EXPORT_INTERVAL": "30000"
+      },
+      "dotnetRunMessages": true
+    },
+    "ResultCompleted": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/ResultCompleted"
+      },
+      "dotnetRunMessages": true
+    },
+    "OutboundCHM": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/OutboundCHM",
+        "OTEL_EXPORTER_OTLP_METRICS_ENDPOINT": "http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318/v1/metrics",
+        "OTEL_EXPORTER_OTLP_TRACES_ENDPOINT": "http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318/v1/traces",
+        "OTEL_EXPORTER_OTLP_LOGS_ENDPOINT": "http://opentelemetry-kube-stack-daemon-collector.opentelemetry-operator-system.svc.cluster.local:4318/v1/logs",
+        "OTEL_EXPORTER_OTLP_PROTOCOL": "http/protobuf",
+        "OTEL_EXPORTER_PROCESSOR_TYPE": "Batch",
+        "OTEL_METRIC_EXPORT_INTERVAL": "30000"
+      },
+      "dotnetRunMessages": true
+    },
+    "ResultReporting (Dev)": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "CONFIG_DIR": "Consumers/ResultReporting"
+      },
+      "dotnetRunMessages": true
+    },
+    "ResultReporting (QA)": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "QA",
+        "CONFIG_DIR": "Consumers/ResultReporting"
+      },
+      "dotnetRunMessages": true
+    },
+    "Report-Ack (QA)": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "QA",
+        "CONFIG_DIR": "Consumers/ReportAck"
+      },
+      "dotnetRunMessages": true
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  },
+    "$schema": "http://json.schemastore.org/launchsettings.json"
+}
